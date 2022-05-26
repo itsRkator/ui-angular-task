@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
+## Install Dependencies
+- If NodeJs is not present in your machine then install NodeJs from [nodejs.org](https://nodejs.org/en/) `Version >= v16.15.0` otherwise ignore this step.
+- Navigate to the project (here ui-angular-task) repository
+Run `npm install` to install required dependencies, modules and packages.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
