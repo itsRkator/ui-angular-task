@@ -1,0 +1,36 @@
+<mat-card>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-responsive" src="{{ data.cover_image }}" alt="Cafe Goodluck" height="100%" width="100%">
+      </div>
+      <div class="col-md-8">
+        <h1 color="primary">{{ data.name }}</h1>
+        <p class="m-0 p-0">{{ data.area }}, {{ data.city }}</p>
+        <p class="m-0 p-0">
+          <mat-icon class="small" color="warn" *ngFor="let i of [1,2,3,4,5]">{{ getStar(i) }}</mat-icon>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu class="menu" style="width: 60vh !important; max-width: 80vh !important; min-width: 50vh !important;" #menu="matMenu">
+            <p class=""><mat-icon class="small" *ngFor="let i of [1,2,3,4,5]" color="warn">{{ getStar(i) }}</mat-icon> {{ calculateRating() }} out of 5</p>
+            <section class="example-section ms-2" *ngFor="let rating of data.review_rating.votes">
+              <span class="small me-2 ms-2" style="width: 50px;">{{ rating.rating }} Star</span>
+              <mat-progress-bar style="height: 0.5vh; width: 75%; border-radius: 3px;" mode="determinate"
+                value="{{ (rating.votes/data.review_rating.total)*100 }}" color="warn"></mat-progress-bar>
+              <span class="small ms-2 me-2"> {{ getRatingPercentage(rating.votes, data.review_rating.total) }}% </span>
+            </section>
+          </mat-menu>
+          | <button mat-button color="accent"><span>{{ data.review_rating.total}} ratings</span></button>
+        </p>
+        <div class="row">
+          <mat-radio-group aria-label="Category">
+            <span>Category: </span>
+            <button mat-stroked-button class="m-2 p-2"
+              *ngFor="let cat of data.category; index as i" value="{{ i }}">{{ cat }}</button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
